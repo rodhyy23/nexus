@@ -1,157 +1,123 @@
 # Nexus
 
-### Automação e orquestração de processos operacionais com Python
+<p align="center">
+  <img src="assets/nexus-banner.svg" alt="Nexus — do processo ao software. Identidade visual em verde e dourado." width="100%">
+</p>
 
-> **Status:** desenvolvimento ativo / homologação  
-> **Este repositório é uma edição pública de portfólio.** Integrações, dados, credenciais, regras internas e partes do código operacional foram removidos ou anonimizados.
+**Automação e orquestração de processos com Python.**
 
-O **Nexus** nasceu de um problema real: um fluxo operacional dependia de várias etapas manuais, validações, consultas, preenchimentos e interação com sistemas diferentes.
+Desenvolvo o Nexus para transformar rotinas manuais em fluxos organizados, com validação, acompanhamento e controle sobre a execução. O projeto nasceu de uma necessidade operacional real e reúne duas frentes: **Nexus Principal**, para preparar e conduzir operações, e **Nexus Automação**, para acompanhar metas e organizar tarefas recorrentes.
 
-A proposta do projeto é transformar esse processo em um fluxo mais **seguro, rastreável, reproduzível e assistido por software**, sem simplesmente automatizar cliques.
+Este repositório apresenta a arquitetura, as decisões de engenharia e a evolução do projeto. **O desenvolvimento está ativo, com fluxos funcionais e etapas em homologação.**
 
-## O problema
+[Principal](#nexus-principal) · [Automação](#nexus-automação) · [Tecnologias](#tecnologias) · [Evolução](#evolução-do-projeto) · [Sobre mim](#sobre-mim)
 
-O processo original exigia que o operador:
+> **Sobre as imagens:** o banner e as duas ilustrações foram criados em SVG para este portfólio. As telas são representações conceituais, com conteúdo fictício; não são capturas da aplicação nem reproduções exatas de sua interface atual.
 
-- interpretasse informações recebidas em formato textual;
-- transformasse essas informações em dados estruturados;
-- validasse diversas regras de negócio;
-- gerasse e revisasse planilhas;
-- consultasse informações em banco de dados;
-- interagisse com um sistema web legado;
-- acompanhasse estados e pendências;
-- repetisse verificações antes de concluir cada operação.
+## O problema que estou resolvendo
 
-Esse modelo aumentava o esforço manual e tornava o processo mais suscetível a inconsistências.
+Uma operação pode começar com um texto, passar por planilhas e consultas a banco, exigir preenchimentos em um sistema web e terminar com verificações manuais. Quando essas etapas ficam desconectadas, o operador precisa reconstruir o contexto a cada passagem e conferir as mesmas informações várias vezes.
 
-## A solução
+O Nexus organiza esse percurso: interpreta a entrada, estrutura os dados, aplica validações e orienta a execução. A proposta é reduzir trabalho repetitivo e inconsistências, mantendo a revisão humana nos pontos que exigem decisão.
 
-O Nexus centraliza essas etapas em uma aplicação desktop e organiza a execução como um fluxo controlado.
+## Nexus Principal
 
-```mermaid
-flowchart LR
-    A[Conceito / entrada textual] --> B[Parser e validações]
-    B --> C[Regras de negócio]
-    C --> D[Plano operacional]
-    D --> E[Interface PySide6]
-    D --> F[Planilhas]
-    D --> G[MySQL / homologação]
-    D --> H[Automação web]
-    G --> I[Simulação e validação]
-    H --> I
-    I --> J[Confirmação do operador]
-    J --> K[Execução]
-    K --> L[Auditoria e rastreabilidade]
-```
+**Da entrada textual à execução assistida.**
 
-## Principais funcionalidades desenvolvidas
+![Ilustração conceitual do Nexus Principal: revisão de um projeto fictício, etapas do fluxo e confirmação do operador.](assets/nexus-principal.svg)
 
-- interpretação e normalização de entradas textuais;
-- aplicação de regras de negócio;
-- geração e atualização de planilhas;
-- interface desktop com **PySide6**;
-- integração com **MySQL**;
-- automação de navegador com **Playwright**;
-- preparação de operações antes da execução;
-- simulação de operações com **ROLLBACK** antes da gravação;
-- confirmação explícita antes de ações de escrita;
-- auditoria e reconsulta após operações;
-- persistência de estado para retomada de fluxos;
-- validação de consistência entre etapas;
-- tratamento de erros com interrupção segura do processo;
-- geração de relatórios e evidências locais;
-- evolução incremental utilizando **Git** e testes de regressão.
+O Nexus Principal é uma aplicação desktop que conecta interpretação de informações, regras de negócio, planilhas, banco de dados e automação web.
 
-## Segurança por design
+### Recursos desenvolvidos
 
-Uma das decisões mais importantes do projeto foi evitar automação "cego até dar certo".
+- **Entrada estruturada:** interpretação e normalização de conceitos textuais, com validação de campos e combinações.
+- **Planilhas:** geração e atualização de fichas para revisão das informações.
+- **Fluxo operacional:** preparação e condução de etapas relacionadas a projetos, campanhas e iniciativas.
+- **Integrações:** consultas e operações com MySQL, além de navegação assistida com Playwright.
+- **Controle de execução:** preparação, simulação transacional nos fluxos de banco aplicáveis, confirmação do operador e reconsulta do resultado.
+- **Continuidade:** registro de estado, diagnóstico de falhas e evidências para acompanhar a execução.
 
-O Nexus trabalha com barreiras como:
+Uma das evoluções recentes é o **fluxo assistido de seleção**, com validação dos cenários suportados e conferência do estado antes de continuar. As regras específicas e os dados do ambiente de origem ficam fora da apresentação pública.
 
-1. preparação antes da execução;
-2. validação das condições esperadas;
-3. simulação quando a operação envolve banco de dados;
-4. bloqueio diante de estados inesperados ou ambíguos;
-5. confirmação humana antes de etapas críticas;
-6. reconsulta e auditoria depois da execução;
-7. nenhuma credencial incorporada ao código.
+### Decisões de engenharia
 
-O objetivo é que uma falha interrompa o fluxo de forma controlada em vez de gerar alterações silenciosas.
+| Decisão | Por que ela existe |
+| --- | --- |
+| Separar regras, interface e integrações | Permitir evolução sem concentrar toda a lógica na tela. |
+| Preparar e validar antes de executar | Identificar inconsistências antes de alterar informações. |
+| Simular operações de banco com `ROLLBACK`, quando aplicável | Conferir o plano antes da gravação definitiva. |
+| Exigir confirmação nas etapas críticas | Manter o operador no controle das ações de escrita. |
+| Interromper diante de um estado inesperado | Evitar que uma divergência seja ignorada durante a automação. |
+| Reconsultar e registrar o resultado | Comparar o que foi solicitado com o que foi efetivamente observado. |
+
+[Conheça a arquitetura do Nexus Principal →](docs/ARCHITECTURE.md)
+
+## Nexus Automação
+
+**Da consulta de metas à organização da agenda.**
+
+![Ilustração conceitual do Nexus Automação: agenda com tarefas fictícias e integração entre Basecamp Classic, Nexus e Todoist.](assets/nexus-automacao.svg)
+
+O Nexus Automação cuida de rotinas recorrentes de acompanhamento. Seu fluxo validado consulta metas no **Basecamp Classic**, organiza o estado local e sincroniza tarefas com o **Todoist**.
+
+### Recursos validados
+
+- Consulta de metas atrasadas, do dia e dos próximos sete dias.
+- Organização de uma agenda a partir das informações consultadas.
+- Persistência local com SQLite, separada do Nexus Principal.
+- Sincronização idempotente com Todoist: repetir a rotina busca atualizar as tarefas correspondentes sem criar duplicatas.
+- Execução diária agendada, com registro de resultado e relatório local.
+
+**Limite atual da integração:** o Basecamp é consultado em modo de leitura. Concluir uma tarefa no Todoist não conclui a meta correspondente no Basecamp. A ilustração apresenta uma proposta visual para explicar o fluxo; ela não significa que essa central já esteja implementada nessa forma.
+
+As duas frentes têm responsabilidades distintas: o Principal conduz operações assistidas; a Automação acompanha rotinas recorrentes e organiza tarefas.
 
 ## Tecnologias
 
-`Python` `PySide6` `MySQL` `Playwright` `Pandas` `OpenPyXL` `Git` `PowerShell`
+| Tecnologia | Aplicação no projeto |
+| --- | --- |
+| **Python** | Regras, processamento e coordenação dos fluxos. |
+| **PySide6 / Qt** | Interface desktop do Nexus Principal. |
+| **MySQL** | Consultas, validações e operações transacionais do Principal. |
+| **Playwright** | Integração do Principal com fluxos em aplicações web. |
+| **Pandas / OpenPyXL** | Leitura, geração e atualização de planilhas. |
+| **SQLite** | Persistência local da Automação. |
+| **Basecamp Classic / Todoist** | Consulta de metas e sincronização de tarefas. |
+| **PowerShell / Agendador de Tarefas do Windows** | Inicialização, manutenção e execução de rotinas. |
+| **Git** | Versionamento e evolução incremental. |
 
-## Arquitetura
+## Evolução do projeto
 
-O projeto foi dividido em responsabilidades para evitar concentrar regras, interface e integrações em um único módulo.
+O projeto avança por incrementos: implementar um cenário, testar o comportamento, observar o uso e ajustar o fluxo antes de ampliar o escopo.
 
-```text
-Nexus
-├── application/      # orquestração dos casos de uso
-├── core/             # regras, parsing, modelos e validações
-├── infra/            # integrações de infraestrutura e banco
-├── ui/               # aplicação desktop PySide6
-├── automation/       # automação e navegação web
-├── audit/            # verificações e comparações
-└── tests/            # regressões e contratos do comportamento
-```
+| Frente | Situação atual | Próximos passos |
+| --- | --- | --- |
+| **Nexus Principal** | Fluxos funcionais em homologação; seleção assistida em expansão. | Ampliar os cenários suportados e refinar navegação e integrações. |
+| **Nexus Automação** | Rotina diária e sincronização de tarefas validadas. | Evoluir a central de acompanhamento e avaliar novas ações controladas. |
+| **Portfólio público** | Documentação de arquitetura e apresentação visual. | Acrescentar exemplos executáveis com dados fictícios após revisão. |
 
-Mais detalhes em [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
-
-## Um exemplo da evolução do projeto
-
-Uma das etapas mais recentes implementadas foi um fluxo assistido de seleção de público.
-
-Em vez de executar diretamente, o Nexus:
-
-- interpreta os critérios;
-- valida se o cenário é suportado;
-- confere metadados e estado atual;
-- bloqueia padrões desconhecidos ou condições consideradas inseguras;
-- abre o fluxo oficial apenas quando a preparação está válida;
-- exige confirmações distintas para preparação e execução;
-- reconsulta o resultado e registra apenas informações necessárias ao acompanhamento.
-
-Essa abordagem representa bem a filosofia do projeto: **automatizar sem remover controle e rastreabilidade**.
+As próximas etapas representam objetivos de desenvolvimento. O repositório público atual contém documentação e imagens; ainda não inclui uma aplicação demonstrativa instalável.
 
 ## O que este projeto demonstra
 
-Mais do que uma tecnologia específica, o Nexus representa minha evolução em:
+- **Análise de processos:** entender uma rotina real e convertê-la em etapas de software.
+- **Modelagem de regras:** transformar texto e requisitos operacionais em dados e validações.
+- **Integração de sistemas:** conectar interface desktop, planilhas, banco e aplicações web.
+- **Tratamento de estado e falhas:** conferir pré-condições, registrar progresso e interromper fluxos com diagnóstico.
+- **Desenvolvimento incremental:** evoluir a solução a partir de testes, regressões e retorno dos usuários.
 
-- transformar um problema operacional em software;
-- entender e modelar regras de negócio;
-- dividir um sistema em módulos e responsabilidades;
-- trabalhar com aplicações que possuem estado;
-- integrar banco, interface e automação web;
-- pensar em falhas e segurança antes da execução;
-- validar uma solução em um fluxo real e evoluí-la a partir dos testes.
+## Privacidade e escopo público
 
-## Status atual
+O material visual desta apresentação usa somente elementos gráficos e exemplos fictícios. O código operacional completo depende de um contexto privado e não está incluído neste repositório.
 
-🟡 **Em estágio avançado de desenvolvimento e homologação.**
+Credenciais, arquivos `.env` reais, bancos, dumps, relatórios operacionais, dados pessoais, endereços internos e regras proprietárias ficam fora do escopo público. A apresentação se concentra nos problemas abordados, nas tecnologias e nas decisões de engenharia.
 
-Os principais fluxos já são funcionais. O projeto continua recebendo novas regras, melhorias de navegação, integrações e automações.
+[Política de segurança e publicação →](SECURITY.md)
 
-## Sobre o código público
+## Sobre mim
 
-O Nexus foi criado a partir de uma necessidade de ambiente profissional. Por isso, este repositório não é um espelho do ambiente operacional.
+Sou **Rodrigo Oliveira**, desenvolvedor do Nexus. Uso este projeto para aprofundar minha experiência em Python, automação e integração de sistemas, transformando necessidades do dia a dia em software com validação e acompanhamento.
 
-Foram deliberadamente excluídos:
+Este portfólio registra o que estou construindo e minha evolução ao longo do desenvolvimento.
 
-- credenciais e arquivos `.env` reais;
-- endereços e URLs internos;
-- nomes e dados de pessoas;
-- dados operacionais;
-- bancos locais e dumps;
-- identificadores internos;
-- regras específicas que possam expor processos privados;
-- código cujo contexto depende diretamente de sistemas internos.
-
-A intenção deste repositório é documentar a **engenharia, arquitetura, decisões e evolução técnica** do projeto de forma segura.
-
-Veja também [`SECURITY.md`](SECURITY.md).
-
----
-
-Desenvolvido por **Rodrigo Oliveira** como parte da minha evolução em desenvolvimento de software, automação e engenharia de sistemas.
+[Meu perfil no GitHub →](https://github.com/rodhyy23)

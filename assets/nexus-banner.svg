@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="580" viewBox="0 0 1600 580" role="img" aria-labelledby="title desc" font-family="DejaVu Sans, Arial, sans-serif">
+<title id="title">Nexus — do processo ao software</title><desc id="desc">Banner do portfólio Nexus em verde e dourado, com as frentes Principal e Automação.</desc>
+<rect x="0" y="0" width="1600" height="580" rx="28" fill="#081D17" opacity="1"/>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#163F30"/><stop offset="1" stop-color="#081D17"/></linearGradient></defs>
+<rect x="0" y="0" width="1600" height="580" rx="28" fill="url(#bg)" opacity="1"/>
+<path d="M850 0 L660 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M920 0 L730 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M990 0 L800 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1060 0 L870 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1130 0 L940 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1200 0 L1010 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1270 0 L1080 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1340 0 L1150 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1410 0 L1220 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1480 0 L1290 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M1550 0 L1360 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 20 L1600 20" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 90 L1600 90" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 160 L1600 160" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 230 L1600 230" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 300 L1600 300" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 370 L1600 370" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 440 L1600 440" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 510 L1600 510" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<path d="M790 580 L1600 580" fill="none" stroke="#35634C" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+<rect x="64" y="60" width="5" height="28" rx="2" fill="#E7C785" opacity="1"/>
+<text x="88" y="81" fill="#ACC2B6" font-size="18" font-weight="400" letter-spacing="2">PORTFÓLIO  /  DESENVOLVIMENTO ATIVO</text>
+<text x="64" y="226" fill="#F4F7EF" font-size="124" font-weight="700" letter-spacing="2">NEXUS</text>
+<text x="68" y="305" fill="#E7C785" font-size="43" font-weight="400">Do processo ao software.</text>
+<text x="68" y="359" fill="#ACC2B6" font-size="25" font-weight="400">Aplicações desktop, integrações e automação.</text>
+<rect x="68" y="427" width="232" height="38" rx="19" fill="#1F4C38" opacity="1" stroke="#38654B" stroke-width="1"/>
+<text x="184.0" y="452" fill="#6CE5B1" font-size="20" font-weight="700" text-anchor="middle">01  PRINCIPAL</text>
+<rect x="316" y="427" width="260" height="38" rx="19" fill="#253A2B" opacity="1" stroke="#665D3C" stroke-width="1"/>
+<text x="446.0" y="452" fill="#E7C785" font-size="20" font-weight="700" text-anchor="middle">02  AUTOMAÇÃO</text>
+<text x="68" y="531" fill="#ACC2B6" font-size="17" font-weight="400" letter-spacing="1.4">PYTHON    /    REGRAS    /    FLUXOS    /    CONTROLE</text>
+<circle cx="1253" cy="283" r="204" fill="#103324" opacity="1" stroke="#315A3E" stroke-width="1"/>
+<circle cx="1253" cy="283" r="167" fill="none" opacity="1" stroke="#41694B" stroke-width="1"/>
+<rect x="1133" y="163" width="240" height="240" rx="30" fill="#0C251D" opacity="1" stroke="#52714E" stroke-width="2"/>
+<path d="M1188 348 V220 L1318 348 V220" fill="none" stroke="#E7C785" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M1188 220 L1086 143" fill="none" stroke="#6CE5B1" stroke-width="2" stroke-linecap="round" opacity="1"/>
+<path d="M1318 348 L1418 424" fill="none" stroke="#6CE5B1" stroke-width="2" stroke-linecap="round" opacity="1"/>
+<circle cx="1086" cy="143" r="9" fill="#6CE5B1" opacity="1"/>
+<circle cx="1418" cy="424" r="9" fill="#6CE5B1" opacity="1"/>
+<circle cx="1188" cy="220" r="8" fill="#E7C785" opacity="1"/>
+<circle cx="1318" cy="348" r="8" fill="#E7C785" opacity="1"/>
+<rect x="1050" y="57" width="237" height="38" rx="19" fill="#163F30" opacity="1" stroke="#38654B" stroke-width="1"/>
+<text x="1168.5" y="82" fill="#6CE5B1" font-size="17" font-weight="700" text-anchor="middle">NEXUS PRINCIPAL</text>
+<rect x="1262" y="475" width="265" height="38" rx="19" fill="#253A2B" opacity="1" stroke="#665D3C" stroke-width="1"/>
+<text x="1394.5" y="500" fill="#E7C785" font-size="17" font-weight="700" text-anchor="middle">NEXUS AUTOMAÇÃO</text>
+</svg>

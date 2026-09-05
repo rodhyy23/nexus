@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1030" viewBox="0 0 1600 1030" role="img" aria-labelledby="title desc" font-family="DejaVu Sans, Arial, sans-serif">
+<title id="title">Nexus Principal — execução assistida</title><desc id="desc">Ilustração conceitual, não captura real. Um projeto fictício passa por entrada, validação, revisão e execução com confirmação humana.</desc>
+<rect x="0" y="0" width="1600" height="1030" rx="28" fill="#092219" opacity="1"/>
+<text x="64" y="66" fill="#6CE5B1" font-size="21" font-weight="700" letter-spacing="2">01  /  NEXUS PRINCIPAL</text>
+<text x="64" y="129" fill="#F4F7EF" font-size="46" font-weight="700">Da entrada à execução assistida.</text>
+<text x="64" y="177" fill="#ACC2B6" font-size="24" font-weight="400">Informações estruturadas. Etapas visíveis. Decisão humana.</text>
+<rect x="64" y="228" width="1472" height="736" rx="23" fill="#00120B" opacity="0.1"/>
+<rect x="64" y="216" width="1472" height="736" rx="23" fill="#102C22" opacity="1" stroke="#345640" stroke-width="2"/>
+<rect x="65" y="217" width="1470" height="60" rx="22" fill="#183C2D" opacity="1"/>
+<rect x="65" y="248" width="1470" height="28" rx="0" fill="#183C2D" opacity="1"/>
+<path d="M91 252.6 V231 L111.16 252.6 V231" fill="none" stroke="#6CE5B1" stroke-width="2.16" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="126" y="254" fill="#F4F7EF" font-size="21" font-weight="700">NEXUS</text>
+<text x="293" y="254" fill="#ACC2B6" font-size="21" font-weight="400">Principal / Revisão do fluxo</text>
+<rect x="1255" y="228" width="247" height="38" rx="19" fill="#274C38" opacity="1"/>
+<text x="1378.5" y="253" fill="#E7C785" font-size="17" font-weight="700" text-anchor="middle">CONCEITO VISUAL</text>
+<rect x="65" y="277" width="278" height="650" rx="0" fill="#0B261D" opacity="1"/>
+<rect x="65" y="916" width="278" height="35" rx="22" fill="#0B261D" opacity="1"/>
+<rect x="311" y="916" width="32" height="35" rx="0" fill="#0B261D" opacity="1"/>
+<text x="95" y="327" fill="#ACC2B6" font-size="16" font-weight="400" letter-spacing="1">ESPAÇO DE TRABALHO</text>
+<rect x="101" y="372" width="6" height="6" rx="1" fill="none" opacity="1" stroke="#ACC2B6" stroke-width="1.4"/>
+<rect x="111" y="372" width="6" height="6" rx="1" fill="none" opacity="1" stroke="#ACC2B6" stroke-width="1.4"/>
+<rect x="101" y="382" width="6" height="6" rx="1" fill="none" opacity="1" stroke="#ACC2B6" stroke-width="1.4"/>
+<rect x="111" y="382" width="6" height="6" rx="1" fill="none" opacity="1" stroke="#ACC2B6" stroke-width="1.4"/>
+<text x="141" y="388" fill="#ACC2B6" font-size="20" font-weight="400">Visão geral</text>
+<rect x="81" y="417" width="246" height="50" rx="12" fill="#244B36" opacity="1" stroke="#456447" stroke-width="1"/>
+<circle cx="110" cy="442" r="10" fill="none" opacity="1" stroke="#6CE5B1" stroke-width="1.6"/>
+<path d="M110 437 L110 443" fill="none" stroke="#6CE5B1" stroke-width="1.6" stroke-linecap="round" opacity="1"/>
+<path d="M110 443 L115 445" fill="none" stroke="#6CE5B1" stroke-width="1.6" stroke-linecap="round" opacity="1"/>
+<text x="141" y="450" fill="#6CE5B1" font-size="20" font-weight="700">Novo fluxo</text>
+<path d="M101 503 l6 6 l13 -13" fill="none" stroke="#ACC2B6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="141" y="512" fill="#ACC2B6" font-size="20" font-weight="400">Validações</text>
+<path d="M100 560 L118 560" fill="none" stroke="#ACC2B6" stroke-width="1.8" stroke-linecap="round" opacity="1"/>
+<path d="M100 566 L114 566" fill="none" stroke="#ACC2B6" stroke-width="1.8" stroke-linecap="round" opacity="1"/>
+<path d="M100 572 L118 572" fill="none" stroke="#ACC2B6" stroke-width="1.8" stroke-linecap="round" opacity="1"/>
+<text x="141" y="574" fill="#ACC2B6" font-size="20" font-weight="400">Histórico</text>
+<path d="M95 810 L312 810" fill="none" stroke="#34523D" stroke-width="1" stroke-linecap="round" opacity="1"/>
+<circle cx="105" cy="849" r="5" fill="#E7C785" opacity="1"/>
+<text x="122" y="856" fill="#E7C785" font-size="15" font-weight="700" letter-spacing="0.6">AMBIENTE FICTÍCIO</text>
+<text x="95" y="895" fill="#ACC2B6" font-size="17" font-weight="400">Portfólio demonstrativo</text>
+<text x="380" y="337" fill="#F4F7EF" font-size="34" font-weight="700">Revisão do fluxo</text>
+<rect x="1270" y="302" width="230" height="38" rx="19" fill="#293F2B" opacity="1" stroke="#655F3D" stroke-width="1"/>
+<text x="1385.0" y="327" fill="#E7C785" font-size="17" font-weight="700" text-anchor="middle">DEMONSTRAÇÃO</text>
+<text x="380" y="376" fill="#ACC2B6" font-size="22" font-weight="400">Confira o plano antes de autorizar a execução.</text>
+<rect x="380" y="405" width="1120" height="77" rx="14" fill="#17372A" opacity="1" stroke="#31563E" stroke-width="1"/>
+<circle cx="407" cy="444" r="17" fill="#1D4331" opacity="1" stroke="#6CE5B1" stroke-width="1.5"/>
+<text x="407" y="451" fill="#6CE5B1" font-size="18" font-weight="700" text-anchor="middle">1</text>
+<text x="438" y="451" fill="#6CE5B1" font-size="23" font-weight="400">Entrada</text>
+<path d="M617 444 L645 444" fill="none" stroke="#517051" stroke-width="1.5" stroke-linecap="round" opacity="1"/>
+<circle cx="687" cy="444" r="17" fill="#1D4331" opacity="1" stroke="#6CE5B1" stroke-width="1.5"/>
+<text x="687" y="451" fill="#6CE5B1" font-size="18" font-weight="700" text-anchor="middle">2</text>
+<text x="718" y="451" fill="#6CE5B1" font-size="23" font-weight="400">Validar</text>
+<path d="M897 444 L925 444" fill="none" stroke="#517051" stroke-width="1.5" stroke-linecap="round" opacity="1"/>
+<circle cx="967" cy="444" r="17" fill="#2A4B33" opacity="1" stroke="#E7C785" stroke-width="1.5"/>
+<text x="967" y="451" fill="#E7C785" font-size="18" font-weight="700" text-anchor="middle">3</text>
+<text x="998" y="451" fill="#E7C785" font-size="23" font-weight="700">Revisar</text>
+<path d="M1177 444 L1205 444" fill="none" stroke="#517051" stroke-width="1.5" stroke-linecap="round" opacity="1"/>
+<circle cx="1247" cy="444" r="17" fill="#1D4331" opacity="1" stroke="#ACC2B6" stroke-width="1.5"/>
+<text x="1247" y="451" fill="#ACC2B6" font-size="18" font-weight="700" text-anchor="middle">4</text>
+<text x="1278" y="451" fill="#ACC2B6" font-size="23" font-weight="400">Executar</text>
+<rect x="380" y="506" width="658" height="330" rx="16" fill="#133327" opacity="1" stroke="#345640" stroke-width="1"/>
+<text x="406" y="545" fill="#F4F7EF" font-size="25" font-weight="700">Plano de demonstração</text>
+<text x="406" y="588" fill="#ACC2B6" font-size="16" font-weight="700" letter-spacing="1.5">PROJETO</text>
+<rect x="406" y="602" width="606" height="56" rx="10" fill="#0F291F" opacity="1" stroke="#3A5A40" stroke-width="1"/>
+<text x="424" y="638" fill="#F4F7EF" font-size="25" font-weight="400">Projeto Exemplo</text>
+<circle cx="423" cy="692" r="14" fill="#193F31" opacity="1"/>
+<path d="M417 692 l4 4 l8 -8" fill="none" stroke="#6CE5B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="450" y="699" fill="#ACC2B6" font-size="23" font-weight="400">Estruturar informações</text>
+<circle cx="423" cy="742" r="14" fill="#193F31" opacity="1"/>
+<path d="M417 742 l4 4 l8 -8" fill="none" stroke="#6CE5B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="450" y="749" fill="#ACC2B6" font-size="23" font-weight="400">Conferir regras e consistência</text>
+<circle cx="423" cy="792" r="14" fill="#193F31" opacity="1"/>
+<path d="M417 792 l4 4 l8 -8" fill="none" stroke="#6CE5B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="450" y="799" fill="#ACC2B6" font-size="23" font-weight="400">Preparar a integração</text>
+<rect x="1062" y="506" width="438" height="330" rx="16" fill="#213E2C" opacity="1" stroke="#6C6743" stroke-width="1"/>
+<text x="1088" y="548" fill="#E7C785" font-size="25" font-weight="700">Antes de executar</text>
+<text x="1088" y="582" fill="#ACC2B6" font-size="19" font-weight="400">Pontos de conferência do fluxo</text>
+<circle cx="1103" cy="627" r="14" fill="#193F31" opacity="1"/>
+<path d="M1097 627 l4 4 l8 -8" fill="none" stroke="#6CE5B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="1130" y="634" fill="#F4F7EF" font-size="21" font-weight="400">Entrada estruturada</text>
+<circle cx="1103" cy="678" r="14" fill="#193F31" opacity="1"/>
+<path d="M1097 678 l4 4 l8 -8" fill="none" stroke="#6CE5B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="1130" y="685" fill="#F4F7EF" font-size="21" font-weight="400">Validações conferidas</text>
+<circle cx="1103" cy="729" r="14" fill="#665B35" opacity="1"/>
+<text x="1103" y="736" fill="#E7C785" font-size="20" font-weight="700" text-anchor="middle">!</text>
+<text x="1130" y="736" fill="#E7C785" font-size="21" font-weight="400">Confirmação pendente</text>
+<path d="M1088 764 L1474 764" fill="none" stroke="#566042" stroke-width="1" stroke-linecap="round" opacity="1"/>
+<text x="1088" y="801" fill="#E7C785" font-size="18" font-weight="700" letter-spacing="2">CONTROLE HUMANO</text>
+<text x="381" y="883" fill="#ACC2B6" font-size="22" font-weight="400">Revise as informações para continuar.</text>
+<text x="381" y="917" fill="#ACC2B6" font-size="18" font-weight="400">Nenhuma ação é executada nesta ilustração.</text>
+<rect x="1106" y="862" width="394" height="58" rx="12" fill="#E7C785" opacity="1"/>
+<text x="1303" y="900" fill="#102F26" font-size="22" font-weight="700" text-anchor="middle">Revisar e confirmar</text>
+<text x="64" y="998" fill="#ACC2B6" font-size="17" font-weight="400" letter-spacing="1">ILUSTRAÇÃO CONCEITUAL  /  CONTEÚDO FICTÍCIO  /  NÃO É CAPTURA DA APLICAÇÃO</text>
+</svg>
