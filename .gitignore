@@ -1,0 +1,55 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+
+# Databases and operational state
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sql
+*.dump
+
+# Logs, reports and local evidence
+*.log
+logs/
+reports/
+screenshots/
+test-results/
+playwright-report/
+
+# Operational files
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.jsonl
+
+# Local configuration
+config.json
+operators.json
+ui_preferences.json
+
+# Build / IDE / OS
+build/
+dist/
+*.spec
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
