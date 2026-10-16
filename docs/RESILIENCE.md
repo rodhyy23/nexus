@@ -2,7 +2,7 @@
 
 Uma aplicação operacional precisa lidar com cliques repetidos, mudanças de contexto
 e falhas intermediárias sem depender de uma sequência perfeita de ações do usuário.
-Esta página descreve a primeira rodada de proteções do Nexus, registrada em
+Esta página descreve duas etapas de proteção do Nexus, registradas em
 16/10/2026, em termos genéricos e sem dados do ambiente de origem.
 
 ## Uma tarefa interna por vez
@@ -45,14 +45,40 @@ o comportamento de uma aplicação web externa nem explica incidentes anteriores
 Recarregamentos durante gravações precisam de testes próprios em ambiente seguro
 e reconsulta do resultado antes de qualquer novo envio.
 
+## Preservação e seleção de fichas
+
+Uma geração nova recebe um nome exclusivo quando já existe uma ficha com o nome
+habitual. O conteúdo é gravado em um temporário e conferido antes da publicação,
+que recusa substituir arquivos existentes. A versão anterior permanece intacta.
+
+A referência à ficha atual é atualizada de forma atômica, com coordenação entre
+threads do mesmo processo. Se essa atualização falhar, a referência anterior é
+mantida. Uma ficha já concluída permanece disponível para recuperação.
+
+A seleção verifica se o arquivo é uma ficha legível antes de trocar o contexto.
+Arquivos vazios, inválidos, temporários do Excel e planilhas sem estrutura de ficha
+são recusados. A conferência estrutural complementa as validações operacionais.
+
+Falhas de vínculo preservam a seleção anterior. Quando a seleção já foi concluída
+e apenas sua atualização visual falha, o aviso informa o resultado e orienta a
+retomar a operação antes de executar. Não há repetição automática.
+
+A regeneração preliminar atualiza o vínculo sem retroceder a etapa da operação.
+Se já houver uma ficha reconciliada ou arquivada, o fluxo exige retomar a versão
+existente, evitando referências conflitantes.
+
 ## Cobertura e próximos passos
 
-Os 23 novos casos de regressão usam dados sintéticos e estado temporário. A
-validação focada ampliada passou com 246 testes. A suíte completa isolada ainda
-possui falhas e limitações descritas no [registro de evolução](EVOLUTION.md).
+As duas etapas somam **55 casos de regressão de resiliência aprovados**: 23 da
+coordenação da interface e 32 da preservação e seleção de fichas. A execução
+completa isolada terminou com **798 aprovações, 7 falhas, 43 casos ignorados e
+9 erros**, mantendo as pendências anteriores. Consulte o
+[registro de evolução](EVOLUTION.md) para conhecer as evidências e os limites.
 
-A proteção desta rodada cobre a coordenação interna da interface. Exclusão entre
-processos, preservação de arquivos existentes, recuperação de estado danificado
-e interrupções com resultado incerto permanecem como trabalho futuro.
+Exclusão entre processos, recuperação de preferências e estado danificados,
+limites para entradas muito grandes ou maliciosas e interrupções com resultado
+incerto permanecem como trabalho futuro. A concorrência testada nesta etapa usa
+quatro threads; ela não representa quatro aplicações completas. Não há garantia
+geral de durabilidade diante de queda de energia.
 
 [Voltar à apresentação →](../README.md)

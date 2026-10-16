@@ -5,6 +5,36 @@ Ele é uma síntese sanitizada para o portfólio: o código operacional, os dado
 origem e o histórico privado não são publicados aqui. A data de uma entrada indica
 o registro da evolução, sem representar lançamento ou aprovação para produção.
 
+## 16/10/2026 — preservação e seleção de fichas
+
+Gerar uma ficha novamente podia sobrescrever a versão anterior. Agora, a primeira
+geração conserva o nome habitual e as seguintes recebem sufixos numéricos, sem
+substituir arquivos existentes, inclusive quando há disputa pelo mesmo nome.
+
+| Situação | Comportamento verificado |
+| --- | --- |
+| Interrupção durante a gravação | O arquivo final só aparece depois da conclusão e da conferência do conteúdo |
+| Atualização indisponível da referência à ficha atual | A referência anterior é preservada; uma nova ficha já concluída continua disponível para recuperação |
+| Seleção de pasta, arquivo inválido, temporário do Excel ou planilha sem estrutura de ficha | A seleção é recusada antes da troca |
+| Falha ao vincular a ficha à operação | A ficha anterior e seu contexto são preservados |
+| Falha visual após uma seleção já concluída | A seleção é mantida, com aviso e orientação para retomar antes de executar |
+| Nova geração após reconciliação ou arquivamento | O fluxo orienta retomar a ficha existente |
+
+Foram acrescentados **32 casos de regressão**, totalizando **55 casos de
+resiliência aprovados** nas duas etapas. Os testes usam arquivos sintéticos,
+estado temporário e interface Qt offscreen, sem executar integrações operacionais.
+
+A suíte completa isolada terminou com **798 aprovações, 7 falhas, 43 casos
+ignorados e 9 erros**. Não surgiram falhas novas na execução final; permanecem
+as divergências e limitações de ambiente documentadas na primeira auditoria.
+A suíte completa ainda não possui aprovação integral.
+
+As gravações da referência à ficha atual são coordenadas entre threads do mesmo
+processo. Trava entre instâncias, recuperação de estado danificado e garantias
+de durabilidade diante de queda de energia permanecem fora desta etapa.
+
+[Detalhes das proteções e limites →](RESILIENCE.md)
+
 ## 16/10/2026 — consolidação e primeira rodada de resiliência
 
 Foi consolidado o trabalho local acumulado no Nexus Principal e na Automação,
@@ -48,11 +78,13 @@ a rodada focada ampliada verificou essas alterações antes do commit local.
 
 ### Pendências prioritárias
 
-1. Preservar uma ficha existente quando o usuário solicita sua geração novamente.
-2. Recuperar preferências inválidas e diagnosticar estado local danificado.
-3. Impedir concorrência entre instâncias e entre fluxos externos da mesma operação.
-4. Reconciliar resultados incertos após interrupções, antes de permitir um reenvio.
-5. Investigar as divergências de regressão sem alterar regras de negócio por suposição.
+A preservação de fichas existentes foi tratada na segunda etapa, registrada acima.
+As prioridades seguintes são:
+
+1. Recuperar preferências inválidas e diagnosticar estado local danificado.
+2. Impedir concorrência entre instâncias e entre fluxos externos da mesma operação.
+3. Reconciliar resultados incertos após interrupções, antes de permitir um reenvio.
+4. Investigar as divergências de regressão sem alterar regras de negócio por suposição.
 
 [Detalhes das proteções e do que ainda falta →](RESILIENCE.md)
 
