@@ -5,6 +5,41 @@ Ele é uma síntese sanitizada para o portfólio: o código operacional, os dado
 origem e o histórico privado não são publicados aqui. A data de uma entrada indica
 o registro da evolução, sem representar lançamento ou aprovação para produção.
 
+## 16/10/2026 — preferências e retomada de estado local
+
+A terceira etapa tratou preferências inválidas e checkpoints locais inconsistentes.
+A leitura visual usa padrões seguros sem reescrever o arquivo. Ao salvar uma
+preferência cujo conteúdo está inválido, uma cópia exclusiva dos bytes originais
+é concluída antes da nova publicação.
+
+| Situação | Comportamento verificado |
+| --- | --- |
+| Tema ou preferência visual com tipo inesperado | A interface usa um padrão seguro em memória |
+| Conteúdo de preferências ilegível | O original é preservado em cópia local antes de salvar uma nova preferência |
+| Falha de leitura, backup ou publicação | A gravação não substitui o original |
+| Mudanças de preferências em threads simultâneas | A leitura, mescla e gravação são coordenadas dentro do mesmo processo |
+| Falha ao salvar tema ou gaveta | O visual anterior é mantido e a interface informa a falha |
+| Checkpoint com JSON ilegível ou tipo incompatível | A retomada é bloqueada; ele não é interpretado como uma operação vazia |
+| Alteração local envolvendo estado inconsistente | A verificação ocorre antes da gravação, preservando registros e eventos |
+| Banco existente vazio ou ilegível | A abertura é bloqueada com diagnóstico, sem recriação automática |
+
+Foram acrescentados **101 casos de regressão**, totalizando **156 casos de
+resiliência aprovados** nas três etapas. A execução completa isolada terminou com
+**899 aprovações, 7 falhas, 43 casos ignorados e 9 erros**, mantendo as pendências
+anteriores e sem falhas novas nesta etapa. A suíte completa ainda não possui
+aprovação integral.
+
+Os testes usam dados sintéticos, estado temporário e Qt offscreen, com rede,
+processos externos e escrita operacional bloqueados. Não executam integrações
+operacionais. Uma revisão independente também verificou os pontos de preservação.
+
+A proteção valida a estrutura JSON esperada; ela não repara bancos nem valida
+toda a semântica de campos aninhados. Cópias de recuperação permanecem locais.
+Trava entre processos e recuperação de resultados incertos após interrupções
+continuam como prioridades.
+
+[Detalhes das proteções e limites →](RESILIENCE.md)
+
 ## 16/10/2026 — preservação e seleção de fichas
 
 Gerar uma ficha novamente podia sobrescrever a versão anterior. Agora, a primeira
@@ -81,10 +116,12 @@ a rodada focada ampliada verificou essas alterações antes do commit local.
 A preservação de fichas existentes foi tratada na segunda etapa, registrada acima.
 As prioridades seguintes são:
 
-1. Recuperar preferências inválidas e diagnosticar estado local danificado.
-2. Impedir concorrência entre instâncias e entre fluxos externos da mesma operação.
-3. Reconciliar resultados incertos após interrupções, antes de permitir um reenvio.
-4. Investigar as divergências de regressão sem alterar regras de negócio por suposição.
+As preferências inválidas e a retomada defensiva do estado local foram tratadas
+na terceira etapa, registrada acima. Permanecem:
+
+1. Impedir concorrência entre instâncias e entre fluxos externos da mesma operação.
+2. Reconciliar resultados incertos após interrupções, antes de permitir um reenvio.
+3. Investigar as divergências de regressão sem alterar regras de negócio por suposição.
 
 [Detalhes das proteções e do que ainda falta →](RESILIENCE.md)
 

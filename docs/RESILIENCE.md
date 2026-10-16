@@ -2,7 +2,7 @@
 
 Uma aplicação operacional precisa lidar com cliques repetidos, mudanças de contexto
 e falhas intermediárias sem depender de uma sequência perfeita de ações do usuário.
-Esta página descreve duas etapas de proteção do Nexus, registradas em
+Esta página descreve três etapas de proteção do Nexus, registradas em
 16/10/2026, em termos genéricos e sem dados do ambiente de origem.
 
 ## Uma tarefa interna por vez
@@ -67,18 +67,40 @@ A regeneração preliminar atualiza o vínculo sem retroceder a etapa da operaç
 Se já houver uma ficha reconciliada ou arquivada, o fluxo exige retomar a versão
 existente, evitando referências conflitantes.
 
+## Preferências e estado local
+
+Preferências visuais com tipos inválidos usam padrões seguros em memória.
+A leitura não reescreve o original. Antes de salvar uma nova preferência sobre
+conteúdo inválido, o Nexus conclui uma cópia exclusiva dos bytes originais.
+
+Se a leitura, o backup ou a publicação falhar, o original não é substituído.
+As interfaces mantêm o visual anterior quando não conseguem salvar uma mudança
+de tema ou da gaveta. Chaves desconhecidas preservam seus valores JSON.
+
+O estado de operações exige JSON legível e do tipo esperado. Campos vazios
+legados conservam a compatibilidade existente, mas estruturas inconsistentes
+bloqueiam a retomada. Os mutadores verificam o estado antes de gravar; uma falha
+não deve ser descoberta somente depois do commit local.
+
+O guia conserva a operação ativa, limpa aprovações e bloqueia sua ação quando
+a leitura falha. Ele não apresenta a falha como uma nova operação. Um banco
+existente vazio ou ilegível exige diagnóstico, sem recriação automática.
+Essas verificações não substituem restauração a partir de uma cópia validada.
+
 ## Cobertura e próximos passos
 
-As duas etapas somam **55 casos de regressão de resiliência aprovados**: 23 da
-coordenação da interface e 32 da preservação e seleção de fichas. A execução
-completa isolada terminou com **798 aprovações, 7 falhas, 43 casos ignorados e
-9 erros**, mantendo as pendências anteriores. Consulte o
+As três etapas somam **156 casos de regressão de resiliência aprovados**: 23 da
+coordenação da interface, 32 da preservação e seleção de fichas e 101 da proteção
+de preferências e estado local. A execução completa isolada terminou com **899
+aprovações, 7 falhas, 43 casos ignorados e 9 erros**, mantendo as pendências
+anteriores. Consulte o
 [registro de evolução](EVOLUTION.md) para conhecer as evidências e os limites.
 
-Exclusão entre processos, recuperação de preferências e estado danificados,
-limites para entradas muito grandes ou maliciosas e interrupções com resultado
-incerto permanecem como trabalho futuro. A concorrência testada nesta etapa usa
-quatro threads; ela não representa quatro aplicações completas. Não há garantia
-geral de durabilidade diante de queda de energia.
+Exclusão entre processos, reparo ou restauração de bancos danificados, limites
+para entradas muito grandes ou maliciosas e interrupções com resultado incerto
+permanecem como trabalho futuro. A validação não abrange toda a semântica de campos
+aninhados. A coordenação de gravações testada usa threads da mesma aplicação;
+ela não representa várias aplicações completas. Não há garantia geral de
+durabilidade diante de queda de energia.
 
 [Voltar à apresentação →](../README.md)
