@@ -94,11 +94,11 @@ O projeto avança por incrementos: implementar um cenário, testar o comportamen
 
 | Frente | Situação atual | Próximos passos |
 | --- | --- | --- |
-| **Nexus Principal** | Fluxos funcionais em homologação; proteção da execução, das fichas e da retomada de estado local. | Investigar concorrência entre instâncias, resultados incertos após interrupções e pendências de regressão. |
+| **Nexus Principal** | Fluxos funcionais em homologação; exclusão local de execuções oficiais e bloqueio de reenvio de gravações incertas. | Ampliar limites de entrada, validar interrupções web em ambiente seguro e investigar pendências de regressão. |
 | **Nexus Automação** | Rotina diária e sincronização de tarefas validadas. | Evoluir a central de acompanhamento e avaliar novas ações controladas. |
 | **Portfólio público** | Documentação de arquitetura e apresentação visual. | Acrescentar exemplos executáveis com dados fictícios após revisão. |
 
-As três etapas de 16/10/2026 acrescentaram 156 casos de regressão de resiliência, todos aprovados. A execução completa isolada mais recente terminou com 899 aprovações, mantendo sete falhas e nove erros já documentados. Consulte o [registro de evolução](docs/EVOLUTION.md) para conhecer o escopo e as pendências.
+As quatro etapas de 16/10/2026 acrescentaram 196 casos de regressão de resiliência, todos aprovados. A execução completa isolada mais recente terminou com 939 aprovações, mantendo sete falhas e nove erros já documentados. Consulte o [registro de evolução](docs/EVOLUTION.md) para conhecer o escopo e as pendências.
 
 As próximas etapas representam objetivos de desenvolvimento. O repositório público contém documentação e imagens; ainda não inclui uma aplicação demonstrativa instalável.
 

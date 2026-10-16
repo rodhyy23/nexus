@@ -2,7 +2,7 @@
 
 Uma aplicação operacional precisa lidar com cliques repetidos, mudanças de contexto
 e falhas intermediárias sem depender de uma sequência perfeita de ações do usuário.
-Esta página descreve três etapas de proteção do Nexus, registradas em
+Esta página descreve quatro etapas de proteção do Nexus, registradas em
 16/10/2026, em termos genéricos e sem dados do ambiente de origem.
 
 ## Uma tarefa interna por vez
@@ -87,20 +87,44 @@ a leitura falha. Ele não apresenta a falha como uma nova operação. Um banco
 existente vazio ou ilegível exige diagnóstico, sem recriação automática.
 Essas verificações não substituem restauração a partir de uma cópia validada.
 
+## Concorrência entre execuções e resultado incerto
+
+O ponto de entrada oficial do Principal aceita uma janela por instalação.
+Os consoles oficiais compartilham uma trava local mantida durante sua execução.
+Os serviços de preparação, simulação e gravação de banco usam a mesma exclusão.
+
+A trava é mantida pelo sistema operacional, sem expirar por tempo. Encerrar o
+processo libera a exclusão, mas não comprova o resultado de uma gravação.
+O arquivo de trava permanece e não precisa ser apagado para abrir novamente.
+
+Antes de enviar uma gravação pelo serviço, o Nexus persiste uma tentativa.
+Ela só é concluída após registrar o resultado e terminar a persistência local.
+Uma interrupção, resposta incerta ou falha de relatório mantém o bloqueio,
+inclusive ao abrir outro serviço ou retomar a operação.
+
+Uma falha na resposta do COMMIT não é apresentada como rollback confirmado.
+O fluxo orienta conferir o resultado antes de tentar novamente. A recuperação
+não é liberada automaticamente pelo tempo nem pelo encerramento do processo.
+
+Essas proteções são locais à instalação e aos pontos de entrada integrados.
+Não são uma trava distribuída entre computadores nem uma restauração automática.
+As regras de negócio e a reconciliação web existente foram preservadas.
+
 ## Cobertura e próximos passos
 
-As três etapas somam **156 casos de regressão de resiliência aprovados**: 23 da
-coordenação da interface, 32 da preservação e seleção de fichas e 101 da proteção
-de preferências e estado local. A execução completa isolada terminou com **899
-aprovações, 7 falhas, 43 casos ignorados e 9 erros**, mantendo as pendências
-anteriores. Consulte o
+As quatro etapas somam **196 casos de regressão de resiliência aprovados**: 23 da
+coordenação da interface, 32 da preservação e seleção de fichas, 101 da proteção
+de preferências e estado local e 40 da exclusão entre execuções e do tratamento
+de resultados incertos. A execução completa isolada terminou com **939 aprovações,
+7 falhas, 43 casos ignorados e 9 erros**, mantendo as pendências anteriores.
+Consulte o
 [registro de evolução](EVOLUTION.md) para conhecer as evidências e os limites.
 
-Exclusão entre processos, reparo ou restauração de bancos danificados, limites
-para entradas muito grandes ou maliciosas e interrupções com resultado incerto
+Reparo ou restauração de bancos danificados, limites para entradas grandes ou
+maliciosas, validação de interrupções web e recuperação guiada por evidências
 permanecem como trabalho futuro. A validação não abrange toda a semântica de campos
-aninhados. A coordenação de gravações testada usa threads da mesma aplicação;
-ela não representa várias aplicações completas. Não há garantia geral de
-durabilidade diante de queda de energia.
+aninhados. A exclusão entre processos foi testada com processos sintéticos locais;
+não houve execução simultânea de aplicações completas contra serviços reais.
+Não há garantia geral de durabilidade diante de queda de energia.
 
 [Voltar à apresentação →](../README.md)

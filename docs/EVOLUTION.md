@@ -5,6 +5,41 @@ Ele é uma síntese sanitizada para o portfólio: o código operacional, os dado
 origem e o histórico privado não são publicados aqui. A data de uma entrada indica
 o registro da evolução, sem representar lançamento ou aprovação para produção.
 
+## 16/10/2026 — concorrência e gravações com resultado incerto
+
+A quarta etapa acrescentou exclusão local aos pontos de entrada oficiais do
+Nexus Principal. Uma segunda janela informa que a instalação já está aberta.
+Os consoles oficiais compartilham uma trava mantida durante toda a execução,
+inclusive quando a janela principal já foi fechada.
+
+| Situação | Comportamento verificado |
+| --- | --- |
+| Outro console ou serviço de gravação já está ativo | A execução concorrente é recusada antes de iniciar o fluxo |
+| Processo dono da trava encerra | O sistema operacional libera a exclusão; o arquivo de trava pode permanecer |
+| Gravação é interrompida ou sua resposta se perde | A tentativa registrada antes do envio permanece pendente |
+| COMMIT pode ter ocorrido, mas não houve confirmação | O resultado é tratado como incerto; não se afirma reversão |
+| Falha ao salvar relatório após a gravação | O registro pendente impede repetir a ação |
+| Outra conexão salva respostas simultaneamente | A transação preserva a tentativa e as demais respostas |
+| Retomada encontra uma tentativa pendente | O guia e os serviços bloqueiam o reenvio e orientam a conferência |
+
+Foram acrescentados **40 casos de regressão**, totalizando **196 casos de
+resiliência aprovados** nas quatro etapas. A rodada focada ampliada aprovou
+**293 testes**. A suíte completa isolada terminou com **939 aprovações, 7 falhas,
+43 casos ignorados e 9 erros**, mantendo as pendências anteriores e sem falhas
+novas nesta etapa. A suíte completa ainda não possui aprovação integral.
+
+Dois cenários usam um processo sintético real, limitado a uma trava e arquivos
+temporários, para verificar exclusão e liberação após saída normal ou encerramento
+forçado. Os testes não executam ações reais nas integrações operacionais.
+
+A proteção é local à instalação; ela não equivale a uma trava distribuída entre
+computadores. Liberar a trava após encerrar um processo não libera uma tentativa
+incerta para reenvio. A recuperação exige conferir o resultado e o checkpoint.
+A etapa protege os serviços de gravação e preserva a reconciliação web existente;
+ela não implementa restauração automática.
+
+[Detalhes das proteções e limites →](RESILIENCE.md)
+
 ## 16/10/2026 — preferências e retomada de estado local
 
 A terceira etapa tratou preferências inválidas e checkpoints locais inconsistentes.
@@ -119,9 +154,13 @@ As prioridades seguintes são:
 As preferências inválidas e a retomada defensiva do estado local foram tratadas
 na terceira etapa, registrada acima. Permanecem:
 
-1. Impedir concorrência entre instâncias e entre fluxos externos da mesma operação.
-2. Reconciliar resultados incertos após interrupções, antes de permitir um reenvio.
-3. Investigar as divergências de regressão sem alterar regras de negócio por suposição.
+A quarta etapa acrescentou exclusão local nos fluxos oficiais do Principal e
+bloqueio de reenvio de gravações incertas. As próximas frentes são:
+
+1. Definir limites para entradas muito grandes ou maliciosas.
+2. Ampliar a validação segura de interrupções web e a recuperação guiada por evidências.
+3. Avaliar exclusão entre computadores e nas demais aplicações, conforme necessidade.
+4. Investigar divergências de regressão sem alterar regras de negócio por suposição.
 
 [Detalhes das proteções e do que ainda falta →](RESILIENCE.md)
 
