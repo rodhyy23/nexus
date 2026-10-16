@@ -12,6 +12,8 @@ Este repositório apresenta a arquitetura, as decisões de engenharia e a evolu�
 
 [Principal](#nexus-principal) · [Automação](#nexus-automação) · [Tecnologias](#tecnologias) · [Evolução](#evolução-do-projeto) · [Sobre mim](#sobre-mim)
 
+[Registro de melhorias e problemas resolvidos →](docs/EVOLUTION.md) · [Proteções de resiliência →](docs/RESILIENCE.md)
+
 > **Sobre as imagens:** o banner e as duas ilustrações foram criados em SVG para este portfólio. As telas são representações conceituais, com conteúdo fictício; não são capturas da aplicação nem reproduções exatas de sua interface atual.
 
 ## O problema que estou resolvendo
@@ -92,11 +94,13 @@ O projeto avança por incrementos: implementar um cenário, testar o comportamen
 
 | Frente | Situação atual | Próximos passos |
 | --- | --- | --- |
-| **Nexus Principal** | Fluxos funcionais em homologação; seleção assistida em expansão. | Ampliar os cenários suportados e refinar navegação e integrações. |
+| **Nexus Principal** | Fluxos funcionais em homologação; primeira camada de proteção contra ações repetidas e troca de contexto durante processamento. | Preservar arquivos existentes, ampliar a recuperação de falhas e investigar pendências de regressão. |
 | **Nexus Automação** | Rotina diária e sincronização de tarefas validadas. | Evoluir a central de acompanhamento e avaliar novas ações controladas. |
 | **Portfólio público** | Documentação de arquitetura e apresentação visual. | Acrescentar exemplos executáveis com dados fictícios após revisão. |
 
-As próximas etapas representam objetivos de desenvolvimento. O repositório público atual contém documentação e imagens; ainda não inclui uma aplicação demonstrativa instalável.
+A rodada de 16/10/2026 acrescentou 23 casos de regressão de resiliência. A validação focada ampliada passou com 246 testes; a suíte completa isolada ainda possui falhas e limitações documentadas. Consulte o [registro de evolução](docs/EVOLUTION.md) para conhecer o escopo e as pendências.
+
+As próximas etapas representam objetivos de desenvolvimento. O repositório público contém documentação e imagens; ainda não inclui uma aplicação demonstrativa instalável.
 
 ## O que este projeto demonstra
 
